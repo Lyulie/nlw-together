@@ -5,6 +5,8 @@ import { Profile } from "../../components/Profile";
 import { ButtonAdd } from "../../components/ButtonAdd";
 import { CategorySelect } from "../../components/CategorySelect";
 import { HeaderList } from "../../components/HeaderList";
+import { Appointment } from "../../components/Appointment";
+import { ListDivider } from "../../components/ListDivider";
 
 export function Home() {
 
@@ -13,6 +15,19 @@ export function Home() {
     const appointments = [
         {
             id : '1',
+            guild : {
+                id : '1',
+                name : 'Lendários',
+                icon : null,
+                owner : true 
+            },
+            category : '1',
+            date : '23/06 às 01:48',
+            description : 'É hoje que vamos chegar ao challenger sem perder uma partida da md10'
+        },
+
+        {
+            id : '2',
             guild : {
                 id : '1',
                 name : 'Lendários',
@@ -52,9 +67,13 @@ export function Home() {
                 <FlatList
                     data={appointments}
                     keyExtractor={item => item.id}
+                    style={styles.matches}
+                    showsVerticalScrollIndicator={false}
+                    ItemSeparatorComponent={_ => <ListDivider />}
                     renderItem={
                         ({ item }) => (
-                            <Text>{item.guild.name}</Text>
+                            <Appointment data={item} />
+
                         )
                     }
                 />
